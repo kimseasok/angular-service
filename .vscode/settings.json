@@ -6,15 +6,15 @@
 
   // "files.autoSave": "afterDelay",
 
-//  "vsicons.presets.angular": true,
+  //  "vsicons.presets.angular": true,
 
   "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/.DS_Store": true,
-      "**/.gitignore": true,
-      "npm-debug.log": true
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/.gitignore": true,
+    "npm-debug.log": true
   },
 
   "editor.fontFamily": "Roboto Mono",
@@ -24,6 +24,10 @@
   "editor.wordBasedSuggestions": true,
   "editor.selectionHighlight": false,
   "editor.suggestOnTriggerCharacters": true,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+
+  "typescript.preferences.quoteStyle": "single",
 
   "window.zoomLevel": 1,
 
