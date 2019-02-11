@@ -6,6 +6,7 @@ import { Reader } from 'app/models/reader';
 import { LoggerService } from 'app/core/logger.service';
 import { DataService } from 'app/core/data.service';
 import { BookTrackerError } from 'app/models/bookTrackerError';
+import { promise } from 'protractor';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,14 +37,27 @@ export class DashboardComponent implements OnInit {
       );
     this.mostPopularBook = this.dataService.mostPopularBook;
 
-    this.dataService
-      .getAuthorRecommendation(1)
-      .then(
-        (author: string) => this.loggerService.log(author),
-        (err: string) => this.loggerService.log(err)
-      );
+    // this.dataService
+    //   .getAuthorRecommendation(1)
+    //   .then(
+    //     (author: string) => this.loggerService.log(author),
+    //     (err: string) => this.loggerService.log(err)
+    //   );
+
+    this.getAuthorRecommendationAsync(1);
 
     this.loggerService.log('Done dashboard initialization');
+  }
+
+  private async getAuthorRecommendationAsync(readerID: number): Promise<void> {
+    try {
+      const author: string = await this.dataService.getAuthorRecommendation(
+        readerID
+      );
+      this.loggerService.log(author);
+    } catch (error) {
+      this.loggerService.error(error);
+    }
   }
 
   deleteBook(bookID: number): void {
