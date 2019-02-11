@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { LoggerService } from './logger.service';
 import { Reader } from 'app/models/reader';
 import { allReaders, allBooks } from 'app/data';
 import { Book } from 'app/models/book';
+import { BookTrackerError } from 'app/models/bookTrackerError';
 
 @Injectable()
 export class DataService {
@@ -16,11 +18,12 @@ export class DataService {
   //   return allReaders;
   // }
 
-  getAllReaders(): Observable<Reader[]> {
+  getAllReaders(): Observable<Reader[] | BookTrackerError> {
     // return this.http.get<Reader[]>('/api/readers');
-
     // test request with error url
-    return this.http.get<Reader[]>('/api/errors/500');
+    return this.http
+      .get<Reader[]>('/api/errors/500')
+      .pipe(catchError(this.handleError));
   }
 
   getReaderById(id: number): Reader {
@@ -37,5 +40,13 @@ export class DataService {
 
   setMostPopularBook(book: Book): void {
     this.mostPopularBook = book;
+  }
+
+  handleError(error: HttpErrorResponse): Observable<BookTrackerError> {
+    const dataError = new BookTrackerError();
+    dataError.errorNumber = 100;
+    dataError.message = error.statusText;
+    dataError.friendlyMessage = 'An error occured retrieving data.';
+    return throwError(dataError);
   }
 }

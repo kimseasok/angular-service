@@ -5,6 +5,7 @@ import { allBooks, allReaders } from 'app/data';
 import { Reader } from 'app/models/reader';
 import { LoggerService } from 'app/core/logger.service';
 import { DataService } from 'app/core/data.service';
+import { BookTrackerError } from 'app/models/bookTrackerError';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,8 +30,8 @@ export class DashboardComponent implements OnInit {
     this.dataService
       .getAllReaders()
       .subscribe(
-        data => (this.allReaders = data),
-        err => this.loggerService.error(err),
+        (data: Reader[]) => (this.allReaders = data),
+        (err: BookTrackerError) => console.log(err.friendlyMessage),
         () => this.loggerService.log('All done!')
       );
     this.mostPopularBook = this.dataService.mostPopularBook;
