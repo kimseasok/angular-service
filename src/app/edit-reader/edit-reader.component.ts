@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { allReaders } from 'app/data';
 import { Reader } from 'app/models/reader';
-import { DataService } from 'app/services/data.service';
+import { DataService } from 'app/core/data.service';
 import { BadgeService } from 'app/services/badge.service';
 
 @Component({

@@ -9,8 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { EditReaderComponent } from './edit-reader/edit-reader.component';
-import { LoggerService } from './services/logger.service';
-import { DataService } from './services/data.service';
+import { CoreModule } from './core/core.module';
 // import { PlainLoggerService } from './services/plain-logger.service';
 // import { dataServiceFactory } from './services/data.service.factory';
 
@@ -23,24 +22,7 @@ import { DataService } from './services/data.service';
     EditBookComponent,
     AddReaderComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [
-    // { provide: LoggerService, useClass: PlainLoggerService },
-    // {
-    //   provide: LoggerService,
-    //   useValue: {
-    //     log: message => console.log(`MESSAGE: ${message}`),
-    //     error: message => console.error(message)
-    //   }
-    // },
-    // {
-    //   provide: DataService,
-    //   useFactory: dataServiceFactory,
-    //   deps: [LoggerService]
-    // }
-    DataService,
-    LoggerService
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

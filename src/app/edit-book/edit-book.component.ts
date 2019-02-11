@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Book } from 'app/models/book';
 import { allBooks } from 'app/data';
-import { DataService } from 'app/services/data.service';
-import { LoggerService } from 'app/services/logger.service';
+import { DataService } from 'app/core/data.service';
+import { LoggerService } from 'app/core/logger.service';
 
 @Component({
   selector: 'app-edit-book',
