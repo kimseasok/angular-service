@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { EditReaderComponent } from './edit-reader/edit-reader.component';
 import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 // import { PlainLoggerService } from './services/plain-logger.service';
 // import { dataServiceFactory } from './services/data.service.factory';
 
@@ -22,7 +23,13 @@ import { CoreModule } from './core/core.module';
     EditBookComponent,
     AddReaderComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    CoreModule,
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
