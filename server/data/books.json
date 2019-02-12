@@ -7,7 +7,7 @@
     },
     {
         "bookID": 2,
-        "title": "Winnie-the-Pooh",
+        "title": "Winnie-the-Pooh updated",
         "author": "A. A. Milne",
         "publicationYear": "1926"
     },
@@ -24,15 +24,15 @@
         "publicationYear": "1937"
     },
     {
-        "bookID": 5,
-        "title": "Curious George",
-        "author": "H. A. Rey",
-        "publicationYear": "1941"
-    },
-    {
         "bookID": 6,
         "title": "Alice's Adventures in Wonderland",
         "author": "Lewis Carroll",
         "publicationYear": "1865"
+    },
+    {
+        "bookID": 7,
+        "title": "Millioniare in My Dream",
+        "author": "Kimsea Sok",
+        "publicationYear": "2018"
     }
 ]
